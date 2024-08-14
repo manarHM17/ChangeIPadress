@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package network_service;
+
+// The request message containing the details for IP address change.
+message ChangeIPRequest {
+    string device_id = 1;
+    string interface_name = 2;
+    string netmask = 3;
+    string gateway = 4;
+}
+
+// The response message containing the status of the IP address change request.
+message ChangeIPResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// The Network Service definition.
+service NetworkService {
+    rpc ChangeIP(ChangeIPRequest) returns (ChangeIPResponse);
+}
